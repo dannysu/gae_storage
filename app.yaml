@@ -1,0 +1,17 @@
+application: storage
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+default_expiration: "1d"
+
+handlers:
+- url: /robots.txt
+  static_files: files/robots.txt
+  upload: files/robots.txt
+  expiration: "1h"
+- url: /files
+  static_dir: files
+- url: /.*
+  script: storage.app
