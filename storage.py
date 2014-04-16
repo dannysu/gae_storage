@@ -33,7 +33,7 @@ class MainPage(webapp2.RequestHandler):
         if data != None:
             self.response.out.write(json.dumps({'success': True, 'data': data.content, 'version': data.version, 'identifier': data.identifier}))
         else:
-            self.response.out.write(json.dumps({'success': False, 'identifier': identifier}))
+            self.response.set_status(404);
 
     def post(self, identifier):
 
