@@ -58,6 +58,12 @@ class MainPage(webapp2.RequestHandler):
         except db.TransactionFailedError:
             self.response.out.write(json.dumps({'success': False, 'version': version, 'identifier': identifier}))
 
+
+    def options(self, identifier):
+        self.response.headers['Access-Control-Allow-Origin'] = "*"
+        self.response.headers['Access-Control-Allow-Headers'] = "Origin, X-Requested-With, Content-Type, Accept"
+        self.response.headers['Access-Control-Allow-Methods'] = "POST, GET"
+
 app = webapp2.WSGIApplication([
         ('/([0-9a-zA-Z\-_]*)', MainPage)
     ],
